@@ -60,6 +60,11 @@ class ToggleLockEntityRow extends Polymer.Element {
   setConfig(config)
   {
     this._config = config;
+    this.users = null;
+    if(config.users) {
+      this.users = config.users;
+    }
+    console.log(this.users);
   }
 
   set hass(hass) {
@@ -68,6 +73,12 @@ class ToggleLockEntityRow extends Polymer.Element {
   }
 
   clickHandler(e) {
+    e.stopPropagation();
+    if(this.users) {
+      if(! document.querySelector("home-assistant").hass.user) return;
+      let user = document.querySelector("home-assistant").hass.user.name;
+      if(this.users.indexOf(user) < 0) return;
+    }
     this.$.overlay.style.pointerEvents = 'none';
     const lock = this.$.lock;
     if(lock) {
@@ -81,7 +92,6 @@ class ToggleLockEntityRow extends Polymer.Element {
         lock.icon = 'mdi:lock-outline';
       }
     }, 5000);
-    e.stopPropagation();
   }
 
 }

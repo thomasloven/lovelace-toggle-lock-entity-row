@@ -23,3 +23,20 @@ views:
 ```
 
 ![lovelace-locked-toggle](https://user-images.githubusercontent.com/1299821/45876486-0bc76e80-bd9b-11e8-8aa1-543fa4e3d14d.jpg)
+
+
+### Other options
+
+If a list of users is supplied, only those users can disable the lock:
+
+Note that this is not to be considered propper security. The lock can easily be circumvented.
+```
+    - type: entities
+      entities:
+        - entity: light.my_lamp
+          name: A lamp
+          type: custom:toggle-lock-entity-row
+          users:
+            - Thomas
+            - Admin
+```
