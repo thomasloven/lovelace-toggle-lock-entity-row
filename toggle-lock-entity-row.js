@@ -64,7 +64,7 @@ class ToggleLockEntityRow extends Polymer.Element {
     if(config.users) {
       this.users = config.users;
     }
-    console.log(this.users);
+    // console.log(this.users);
   }
 
   set hass(hass) {
