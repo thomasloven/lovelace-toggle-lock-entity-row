@@ -10,18 +10,22 @@ class ToggleLockEntityRow extends Polymer.Element {
         align-items: center;
       }
       #overlay {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        text-align: right;
-        z-index: 1;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		text-align: right;
+		z-index: 1;
+		width: 70px;
+		height: 50px;
+		margin-left: -13px;
+		margin-top: -4px;
       }
       #lock {
-        margin-top: 8px;
+        margin-top: 13px;
         opacity: 1;
-        margin-right: 7px;
+        margin-right: 22px;
         -webkit-animation-duration: 5s;animation-duration 5s;
         -webkit-animation-fill-mode: both;animation-full-mode: both;
       }
