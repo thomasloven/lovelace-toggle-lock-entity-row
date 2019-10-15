@@ -9,7 +9,6 @@ class ToggleLockEntityRow extends Polymer.Element {
         display: flex;
         align-items: center;
       }
-
       #overlay {
         position: absolute;
         left: 0;
