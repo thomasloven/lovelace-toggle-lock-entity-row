@@ -11,17 +11,17 @@ class ToggleLockEntityRow extends Polymer.Element {
       }
 
       #overlay {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		text-align: right;
-		z-index: 1;
-		width: 70px;
-		height: 50px;
-		margin-left: -13px;
-		margin-top: -4px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        text-align: right;
+        z-index: 1;
+        width: 70px;
+        height: 50px;
+        margin-left: -13px;
+        margin-top: -4px;
       }
       #lock {
         margin-top: 13px;
@@ -69,21 +69,21 @@ class ToggleLockEntityRow extends Polymer.Element {
   {
     this._config = config;
     this.users = null;
-	this.unlockdelay = 0;
-	this.relockdelay = 5;
-	this.unlockcolor = '#000000';
+    this.unlockdelay = 0;
+    this.relockdelay = 5;
+    this.unlockcolor = '#000000';
 
     if(config.users) {
       this.users = config.users;
     }
-	if(config.unlockdelay) {
+    if(config.unlockdelay) {
       this.unlockdelay = config.unlockdelay;
     }
     if(config.relockdelay) {
       this.relockdelay = config.relockdelay;
     }
-	this.unlockdelay *= 1000;
-	this.relockdelay *= 1000;
+    this.unlockdelay *= 1000;
+    this.relockdelay *= 1000;
   }
 
   set hass(hass) {
@@ -101,14 +101,14 @@ class ToggleLockEntityRow extends Polymer.Element {
 	
     const lock = this.$.lock;
     if(lock) {
-	  lock.classList.add('waitColor');
-	  document.getElementsByClassName('waitColor').color = this.waitColor;
-	  window.setTimeout(() => {
+      lock.classList.add('waitColor');
+      document.getElementsByClassName('waitColor').color = this.waitColor;
+      window.setTimeout(() => {
         this.$.overlay.style.pointerEvents = 'none';
         lock.icon = 'mdi:lock-open-outline';
         lock.classList.add('fadeOut');
         lock.classList.remove('waitColor');
-	  }, this.unlockdelay);
+      }, this.unlockdelay);
     }
 	
     window.setTimeout(() => {
