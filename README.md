@@ -1,10 +1,5 @@
 
-# lovelace-toggle-lock-entity-row-new
-======================
-#
-# Based on the original version of @thomasloven, many thanks for his great work and time!
-# Add some more options to this awesom card!
-#
+toggle-lock-entity-row
 ======================
 
 Avoid toggling entities by mistake in lovelace.
@@ -33,9 +28,6 @@ views:
             - Thomas
             - Admin
 ```
-
-### Options
-
 
 ## Options
 
