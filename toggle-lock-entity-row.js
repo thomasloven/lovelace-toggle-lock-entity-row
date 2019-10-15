@@ -42,8 +42,8 @@ class ToggleLockEntityRow extends Polymer.Element {
       .fadeOut {
         -webkit-animation-name: fadeOut;animation-name: fadeOut;
       }
-	  .waitColor{
-	    color: #00FF00;
+      .waitColor{
+        color: #00FF00;
 	  }
     </style>
     <hui-generic-entity-row
@@ -104,10 +104,10 @@ class ToggleLockEntityRow extends Polymer.Element {
 	  lock.classList.add('waitColor');
 	  document.getElementsByClassName('waitColor').color = this.waitColor;
 	  window.setTimeout(() => {
-		this.$.overlay.style.pointerEvents = 'none';
-		lock.icon = 'mdi:lock-open-outline';
-		lock.classList.add('fadeOut');
-		lock.classList.remove('waitColor');
+        this.$.overlay.style.pointerEvents = 'none';
+        lock.icon = 'mdi:lock-open-outline';
+        lock.classList.add('fadeOut');
+        lock.classList.remove('waitColor');
 	  }, this.unlockdelay);
     }
 	

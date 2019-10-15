@@ -1,4 +1,10 @@
-toggle-lock-entity-row
+
+# lovelace-toggle-lock-entity-row-new
+======================
+#
+# Based on the original version of @thomasloven, many thanks for his great work and time!
+# Add some more options to this awesom card!
+#
 ======================
 
 Avoid toggling entities by mistake in lovelace.
@@ -20,23 +26,26 @@ views:
         - entity: light.my_lamp
           name: A lamp
           type: custom:toggle-lock-entity-row
-```
-
-![lovelace-locked-toggle](https://user-images.githubusercontent.com/1299821/45876486-0bc76e80-bd9b-11e8-8aa1-543fa4e3d14d.jpg)
-
-
-### Other options
-
-If a list of users is supplied, only those users can disable the lock:
-
-Note that this is not to be considered propper security. The lock can easily be circumvented.
-```
-    - type: entities
-      entities:
-        - entity: light.my_lamp
-          name: A lamp
-          type: custom:toggle-lock-entity-row
+          unlockdelay: 5
+          unlockcolor: '#00ff00'
+          relockdelay: 2
           users:
             - Thomas
             - Admin
 ```
+
+### Options
+
+
+## Options
+
+| Name | Type | Default | Description
+| ---- | ---- | ------- | -----------
+| users | list | none | Users which can disabled lock **\*\***
+| unlockdelay | int | 0 | Time it takes for the lock to be removed
+| relockdelay | int | 5 | Time it takes the switches to be locked again
+| unlockcolor | hex | '#000000' | Icon color 
+
+![lovelace-locked-toggle](https://user-images.githubusercontent.com/1299821/45876486-0bc76e80-bd9b-11e8-8aa1-543fa4e3d14d.jpg)
+
+**\*\*** Note that this is not to be considered propper security. The lock can easily be circumvented.
