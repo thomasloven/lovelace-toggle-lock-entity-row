@@ -97,7 +97,7 @@ class ToggleLockEntityRow extends Polymer.Element {
       let user = document.querySelector("home-assistant").hass.user.name;
       if(this.users.indexOf(user) < 0) return;
     }
-	
+
     const lock = this.$.lock;
     if(lock) {
       lock.classList.add('waitColor');
