@@ -9,6 +9,7 @@ class ToggleLockEntityRow extends Polymer.Element {
         display: flex;
         align-items: center;
       }
+
       #overlay {
 		position: absolute;
 		left: 0;
@@ -41,6 +42,9 @@ class ToggleLockEntityRow extends Polymer.Element {
       .fadeOut {
         -webkit-animation-name: fadeOut;animation-name: fadeOut;
       }
+	  .waitColor{
+	    color: #00FF00;
+	  }
     </style>
     <hui-generic-entity-row
       config="[[_config]]"
@@ -65,9 +69,21 @@ class ToggleLockEntityRow extends Polymer.Element {
   {
     this._config = config;
     this.users = null;
+	this.unlockdelay = 0;
+	this.relockdelay = 5;
+	this.unlockcolor = '#000000';
+
     if(config.users) {
       this.users = config.users;
     }
+	if(config.unlockdelay) {
+      this.unlockdelay = config.unlockdelay;
+    }
+    if(config.relockdelay) {
+      this.relockdelay = config.relockdelay;
+    }
+	this.unlockdelay *= 1000;
+	this.relockdelay *= 1000;
   }
 
   set hass(hass) {
@@ -82,21 +98,27 @@ class ToggleLockEntityRow extends Polymer.Element {
       let user = document.querySelector("home-assistant").hass.user.name;
       if(this.users.indexOf(user) < 0) return;
     }
-    this.$.overlay.style.pointerEvents = 'none';
+	
     const lock = this.$.lock;
     if(lock) {
-      lock.icon = 'mdi:lock-open-outline';
-      lock.classList.add('fadeOut');
+	  lock.classList.add('waitColor');
+	  document.getElementsByClassName('waitColor').color = this.waitColor;
+	  window.setTimeout(() => {
+		this.$.overlay.style.pointerEvents = 'none';
+		lock.icon = 'mdi:lock-open-outline';
+		lock.classList.add('fadeOut');
+		lock.classList.remove('waitColor');
+	  }, this.unlockdelay);
     }
+	
     window.setTimeout(() => {
       this.$.overlay.style.pointerEvents = '';
       if(lock) {
         lock.classList.remove('fadeOut');
         lock.icon = 'mdi:lock-outline';
       }
-    }, 5000);
+    }, (this.unlockdelay+this.relockdelay));
   }
-
 }
 
 customElements.define('toggle-lock-entity-row', ToggleLockEntityRow);
