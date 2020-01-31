@@ -1,6 +1,13 @@
 toggle-lock-entity-row
 ======================
 
+# THIS PLUGIN IS DEPRECATED
+# I RECOMMEND USING [RESTRICTION-CARD](https://github.com/iantrich/restriction-card) WHICH DOES MORE THINGS BETTER
+
+---
+---
+---
+
 Avoid toggling entities by mistake in lovelace.
 
 This will display a normal toggle with a lock symbol in front of it.
